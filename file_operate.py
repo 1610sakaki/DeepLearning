@@ -15,7 +15,7 @@ MISS_TARGET = ['084352', '081655', '082538', '084354',
 NG_TARGET = ['COLOR']
 
 
-class OperateDir():
+class OperateDir:
     def __init__(self):
         self.cnt = 0
 
