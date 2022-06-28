@@ -8,6 +8,8 @@ import cv2
 import numpy as np
 import sys
 import os
+from operate import OperateDir
+import time
 
 DIR_PATH = '/home/mt-sakaki/Development/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/sorted/type4/tmp'
 
@@ -62,7 +64,7 @@ def addSaltPepperNoise(src):
     return out
 
 
-def make_template(dir_path):
+def make_multiimage(dir_path, fname):
     # ルックアップテーブルの生成
     min_table = 50
     max_table = 205
@@ -102,7 +104,7 @@ def make_template(dir_path):
     LUTs.append(LUT_G2)
 
     # 画像の読み込み
-    img = os.path.join(dir_path, sys.argv[1])
+    img = os.path.join(dir_path, fname)
     img_src = cv2.imread(img, 1)
     trans_img = []
     trans_img.append(img_src)
@@ -119,24 +121,26 @@ def make_template(dir_path):
 
     # ノイズ付加
     trans_img.append(addGaussianNoise(img_src))
-    trans_img.append(addSaltPepperNoise(img_src))
+    # trans_img.append(addSaltPepperNoise(img_src))
 
     # 反転
     flip_img = []
     for img in trans_img:
-        flip_img.append(cv2.flip(img, 1))
+        flip_img.append(cv2.flip(img, 1))  # 左右反転
+        flip_img.append(cv2.flip(img, 0))  # 上下反転
+        flip_img.append(cv2.flip(img, -1))  # 上下左右反転
     trans_img.extend(flip_img)
 
     return img_src, trans_img
 
 
-def save_image(img_src, trans_img, dir_path):
+def save_image(img_src, trans_img, dir_path, fname):
     # 保存
-    trans_images = os.path.join(DIR_PATH, "trans_images")
+    trans_images = os.path.join(dir_path, "trans_images")
     if not os.path.exists(trans_images):
         os.mkdir(trans_images)
-
-    base = os.path.splitext(os.path.basename(sys.argv[1]))[0] + "_"
+    print(fname)
+    base = os.path.splitext(os.path.basename(fname))[0] + "_"
     img_src.astype(np.float64)
     for i, img in enumerate(trans_img):
         # 比較用
@@ -144,11 +148,17 @@ def save_image(img_src, trans_img, dir_path):
         fpath = os.path.join(trans_images, base + str(i) + ".jpg")
         cv2.imwrite(fpath, img)
         print(fpath)
+    time.sleep(1)
 
 
 def main(dir_path):
-    img_src, trans_img = make_template(dir_path)
-    save_image(img_src, trans_img, dir_path)
+    ope = OperateDir()
+    flist = ope.all_file(dir_path)
+    print(flist)
+    for fname in flist:
+        print(fname)
+        img_src, trans_img = make_multiimage(dir_path, fname)
+        save_image(img_src, trans_img, dir_path, fname)
 
 
 if __name__ == '__main__':
