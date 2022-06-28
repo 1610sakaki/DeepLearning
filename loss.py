@@ -28,7 +28,7 @@ def get_rows(row, df):  # データの前処理
 
 
 def csv_read(path, fname, columns):  # ファイルパス上のcsvデータをpd.DataFrameに変換する
-    fpath = os.path.join(path, ARGS, fname)
+    fpath = os.path.join(path, 'type' + ARGS, fname)
     df = pd.DataFrame(index=[], columns=columns)
     with open(fpath, encoding='utf-8') as file:
         for row in csv.reader(file):
@@ -38,7 +38,7 @@ def csv_read(path, fname, columns):  # ファイルパス上のcsvデータをpd
 
 def df_plot(df, columns):  # データを可視化する
     df.plot(xlim=[0, EPOCH_MAX])
-    plt.title(ARGS, fontsize=14)
+    plt.title('type' + ARGS, fontsize=14)
     plt.xlabel(columns[0], size=16)
     plt.ylabel(columns[1], size=16)
     plt.tick_params(direction='in', labelsize=14)  # 目盛の向きと数値のサイズ

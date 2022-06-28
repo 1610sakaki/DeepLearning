@@ -69,7 +69,7 @@ def get_rows(row, df):
 
 
 def tsv_read(path, fname, columns):  # ファイルパス上のtsvデータをpd.DataFrameに変換する
-    fpath = os.path.join(path, sys.argv[1], fname)
+    fpath = os.path.join(path, 'type' + sys.argv[1], fname)
     df = pd.DataFrame(index=[], columns=columns)
     with open(fpath, encoding='utf-8') as file:
         reader = csv.reader(file, delimiter='\t')
