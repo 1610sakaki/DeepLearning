@@ -1,5 +1,6 @@
 
-# 学習過程の損失の変化を可視化
+# objective: 学習過程の損失の変化を可視化
+# usage: python3 result.py type4-1
 
 import csv
 import pandas as pd

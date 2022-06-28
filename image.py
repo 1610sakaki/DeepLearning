@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #
-# usage: ./increaseImage.py hogehoge.jpg
+# usage: python3 increaseImage.py hogehoge.jpg
+# objective: 画像を回転やノイズを加えることで複製する
 #
 
 import cv2
@@ -8,7 +9,7 @@ import numpy as np
 import sys
 import os
 
-DIR_PATH = '/home/mt-sakaki/Development/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/sorted/type5/02_ng'
+DIR_PATH = '/home/mt-sakaki/Development/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/sorted/type4/tmp'
 
 # ヒストグラム均一化
 
@@ -95,9 +96,9 @@ def make_template(dir_path):
         LUT_G1[i] = 255 * pow(float(i) / 255, 1.0 / gamma1)
         LUT_G2[i] = 255 * pow(float(i) / 255, 1.0 / gamma2)
 
-    # LUTs.append(LUT_HC)
-    # LUTs.append(LUT_LC)
-    # LUTs.append(LUT_G1)
+    LUTs.append(LUT_HC)
+    LUTs.append(LUT_LC)
+    LUTs.append(LUT_G1)
     LUTs.append(LUT_G2)
 
     # 画像の読み込み
@@ -111,14 +112,14 @@ def make_template(dir_path):
         trans_img.append(cv2.LUT(img_src, LUT))
 
     # 平滑化
-    #trans_img.append(cv2.blur(img_src, average_square))
+    trans_img.append(cv2.blur(img_src, average_square))
 
     # ヒストグラム均一化
     trans_img.append(equalizeHistRGB(img_src))
 
     # ノイズ付加
     trans_img.append(addGaussianNoise(img_src))
-    # trans_img.append(addSaltPepperNoise(img_src))
+    trans_img.append(addSaltPepperNoise(img_src))
 
     # 反転
     flip_img = []
@@ -131,7 +132,7 @@ def make_template(dir_path):
 
 def save_image(img_src, trans_img, dir_path):
     # 保存
-    trans_images = os.path.join(dir_path, "trans_images")
+    trans_images = os.path.join(DIR_PATH, "trans_images")
     if not os.path.exists(trans_images):
         os.mkdir(trans_images)
 

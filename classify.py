@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import cv2
-from file_operate import OperateDir
+from operate import OperateDir
 import os
 import csv
 '''
@@ -17,9 +17,9 @@ IMG_LIST = ['/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/
             '/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/01_ok/220607_081631_0000000305_CAM1_COLOR_OK.jpg'
             ]
 '''
-FPATH = '/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/01_ok'
-MOVE2FILE = '/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/03_miss/03_miss_reclass'
-JUDGE_RATE = 10
+FPATH = '/mnt/c/Users/sakakih/Desktop/Download/220621/color_ok'
+MOVE2FILE = '/mnt/c/Users/sakakih/Desktop/Download/220621/03_miss_reclass'
+JUDGE_RATE = 3
 
 fig = plt.figure(dpi=150)
 
