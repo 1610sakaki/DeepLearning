@@ -7,7 +7,7 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 import sys
-DIR_PATH = '/home/mt-sakaki/Development/AI_PROJECT/csv/resultcsv/'
+DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/csv/resultcsv/'
 FNAME = 'loss.csv'
 COLUMNS = ['Epoch', 'Loss', 'Best', 'time']
 ARGS = sys.argv[1]

@@ -9,12 +9,12 @@ from operate import OperateDir
 import os
 import csv
 '''
-IMG_LIST = ['/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/01_ok/220607_080355_0000000069_CAM1_COLOR_OK.jpg',
-            '/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/01_ok/220607_112647_0000004471_CAM1_COLOR_OK.jpg',
-            '/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/01_ok/220607_112711_0000004482_CAM1_COLOR_OK.jpg',
-            '/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/01_ok/220607_080141_0000000013_CAM1_COLOR_OK.jpg',
-            '/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/01_ok/220607_090422_0000001065_CAM1_COLOR_OK.jpg',
-            '/home/mt-sakaki/Development/project1/izumi04_img/sort_folder/type4/01_ok/220607_081631_0000000305_CAM1_COLOR_OK.jpg'
+IMG_LIST = ['/home/mt-sakaki/DEVELOPMENT/project1/izumi04_img/sort_folder/type4/01_ok/220607_080355_0000000069_CAM1_COLOR_OK.jpg',
+            '/home/mt-sakaki/DEVELOPMENT/project1/izumi04_img/sort_folder/type4/01_ok/220607_112647_0000004471_CAM1_COLOR_OK.jpg',
+            '/home/mt-sakaki/DEVELOPMENT/project1/izumi04_img/sort_folder/type4/01_ok/220607_112711_0000004482_CAM1_COLOR_OK.jpg',
+            '/home/mt-sakaki/DEVELOPMENT/project1/izumi04_img/sort_folder/type4/01_ok/220607_080141_0000000013_CAM1_COLOR_OK.jpg',
+            '/home/mt-sakaki/DEVELOPMENT/project1/izumi04_img/sort_folder/type4/01_ok/220607_090422_0000001065_CAM1_COLOR_OK.jpg',
+            '/home/mt-sakaki/DEVELOPMENT/project1/izumi04_img/sort_folder/type4/01_ok/220607_081631_0000000305_CAM1_COLOR_OK.jpg'
             ]
 '''
 FPATH = '/mnt/c/Users/sakakih/Desktop/Download/220621/color_ok'

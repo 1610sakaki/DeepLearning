@@ -11,12 +11,10 @@ import os
 from operate import OperateDir
 import time
 
-DIR_PATH = '/home/mt-sakaki/Development/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/sorted/type4/tmp'
-
-# ヒストグラム均一化
+DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/sorted/type5/03_miss'
 
 
-def equalizeHistRGB(src):
+def equalizeHistRGB(src):  # ヒストグラム均一化
 
     RGB = cv2.split(src)
     Blue = RGB[0]
@@ -28,10 +26,9 @@ def equalizeHistRGB(src):
     img_hist = cv2.merge([RGB[0], RGB[1], RGB[2]])
     return img_hist
 
-# ガウシアンノイズ
 
+def addGaussianNoise(src):  # ガウシアンノイズ
 
-def addGaussianNoise(src):
     row, col, ch = src.shape
     mean = 0
     var = 0.1
@@ -42,10 +39,9 @@ def addGaussianNoise(src):
 
     return noisy
 
-# salt&pepperノイズ
 
+def addSaltPepperNoise(src):  # salt&pepperノイズ
 
-def addSaltPepperNoise(src):
     row, col, ch = src.shape
     s_vs_p = 0.5
     amount = 0.004
@@ -125,7 +121,7 @@ def make_multiimage(dir_path, fname):
 
     # 反転
     flip_img = []
-    for img in trans_img:
+    for img in trans_img:  # 上記で作成した7種類の複製画像をさらに反転を加えて水増しする
         flip_img.append(cv2.flip(img, 1))  # 左右反転
         flip_img.append(cv2.flip(img, 0))  # 上下反転
         flip_img.append(cv2.flip(img, -1))  # 上下左右反転
@@ -134,8 +130,7 @@ def make_multiimage(dir_path, fname):
     return img_src, trans_img
 
 
-def save_image(img_src, trans_img, dir_path, fname):
-    # 保存
+def save_image(img_src, trans_img, dir_path, fname):  # 保存
     trans_images = os.path.join(dir_path, "trans_images")
     if not os.path.exists(trans_images):
         os.mkdir(trans_images)
@@ -146,7 +141,7 @@ def save_image(img_src, trans_img, dir_path, fname):
         # 比較用
         # cv2.imwrite("trans_images/" + base + str(i) + ".jpg" ,cv2.hconcat([img_src.astype(np.float64), img.astype(np.float64)]))
         fpath = os.path.join(trans_images, base + str(i) + ".jpg")
-        cv2.imwrite(fpath, img)
+        cv2.imwrite(fpath, img)  # 多次元配列(numpy.ndarray)情報を元に、画像を保存
         print(fpath)
     time.sleep(1)
 

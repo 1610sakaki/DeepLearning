@@ -46,7 +46,7 @@ import matplotlib.pyplot as plt
 import re
 import sys
 
-DIR_PATH = '/home/mt-sakaki/Development/AI_PROJECT/csv/resultcsv'
+DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/csv/resultcsv'
 FNAME = 'result.tsv'
 EXCEL_PATH = '/mnt/c/Users/sakakih/Desktop/ガラスクロスモデル結果/ガラスクロス品種1_AIモデル開発報告書.xlsx'
 
@@ -80,7 +80,7 @@ def tsv_read(path, fname, columns):  # ファイルパス上のtsvデータをpd
 
 def write_excel(df, i):  # 結果をエクセルに出力
     with pd.ExcelWriter(EXCEL_PATH, mode='a') as writer:
-        df.to_excel(writer, sheet_name=sys.argv[1] + '_'+str(i))
+        df.to_excel(writer, sheet_name='type' + sys.argv[1] + '_'+str(i))
         #df.to_excel(writer, sheet_name=sys.argv[1])
 
 
