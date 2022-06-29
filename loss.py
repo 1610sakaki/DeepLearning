@@ -11,7 +11,7 @@ DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/csv/resultcsv/'
 FNAME = 'loss.csv'
 COLUMNS = ['Epoch', 'Loss', 'Best', 'time']
 ARGS = sys.argv[1]
-EPOCH_MAX = 100
+EPOCH_MAX = 300
 
 
 def get_rows(row, df):  # データの前処理
@@ -42,6 +42,10 @@ def df_plot(df, columns):  # データを可視化する
     plt.xlabel(columns[0], size=16)
     plt.ylabel(columns[1], size=16)
     plt.tick_params(direction='in', labelsize=14)  # 目盛の向きと数値のサイズ
+    plt.grid(which="major", color="gray", linestyle="solid")  # 目盛り戦
+    plt.minorticks_on()  # 補助目盛り線の有効化
+    plt.grid(which="minor", color="lightgray", linestyle="dotted")  # 補助目盛り線
+
     plt.show()
 
 
