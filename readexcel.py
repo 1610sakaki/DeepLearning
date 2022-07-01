@@ -24,17 +24,14 @@ def read_excel():
     ls = []
     ls1 = df['カメラ時間'].to_list()
     for i, x in enumerate(ls1):
-        x = str(x).replace(':', '')
-        ls1[i] = x
+        ls1[i] = str(x).replace(':', '')
 
     ls2 = df['成型日付'].to_list()
     for i, x in enumerate(ls2):
-        x = x.strftime('%Y%m%d')[2:]
-        ls2[i] = x
+        ls2[i] = x.strftime('%Y%m%d')[2:]
 
     for i in range(len(ls1)):
-        row = str(ls2[i]) + '_' + str(ls1[i])
-        ls.append(row)
+        ls.append(str(ls2[i]) + '_' + str(ls1[i]))
 
     target_file = []
     flist = glob.glob(DOWNLOAD_PATH)

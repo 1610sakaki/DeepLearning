@@ -12,7 +12,7 @@ from operate import OperateDir
 import time
 import matplotlib.pyplot as plt
 
-DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/sorted/type5/03_miss/type5-4_MissImage'
+DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/type5/03_miss/type5-4_MissImage'
 
 
 def equalizeHistRGB(src):  # ヒストグラム均一化
@@ -103,14 +103,6 @@ def make_multiimage(dir_path, fname):
     # 画像の読み込み
     img = os.path.join(dir_path, fname)
     img_src = cv2.imread(img, 1)
-    '''
-    正規化
-    # opencvはカラー画像をBGRモードで読み込むのでRGBに変換
-    img_src = cv2.cvtColor(img_src, cv2.COLOR_BGR2RGB)
-    img_src = img_src / 255  # 正規化
-    plt.imshow(img_src)
-    plt.show()
-    '''
 
     trans_img = []
     trans_img.append(img_src)
@@ -118,7 +110,7 @@ def make_multiimage(dir_path, fname):
     # LUT変換
     for i, LUT in enumerate(LUTs):
         trans_img.append(cv2.LUT(img_src, LUT))
-
+    '''
     # 平滑化
     trans_img.append(cv2.blur(img_src, average_square))
 
@@ -127,14 +119,15 @@ def make_multiimage(dir_path, fname):
 
     # ノイズ付加
     trans_img.append(addGaussianNoise(img_src))
-    # trans_img.append(addSaltPepperNoise(img_src))
+    #trans_img.append(addSaltPepperNoise(img_src))
+    '''
 
     # 反転
     flip_img = []
     for img in trans_img:  # 上記で作成した7種類の複製画像をさらに反転を加えて水増しする
         flip_img.append(cv2.flip(img, 1))  # 左右反転
-        # flip_img.append(cv2.flip(img, 0))  # 上下反転
-        # flip_img.append(cv2.flip(img, -1))  # 上下左右反転
+        flip_img.append(cv2.flip(img, 0))  # 上下反転
+        flip_img.append(cv2.flip(img, -1))  # 上下左右反転
     trans_img.extend(flip_img)
 
     return img_src, trans_img
@@ -144,14 +137,12 @@ def save_image(img_src, trans_img, dir_path, fname):  # 保存
     trans_images = os.path.join(dir_path, "trans_images")
     if not os.path.exists(trans_images):
         os.mkdir(trans_images)
-    print(fname)
     base = os.path.splitext(os.path.basename(fname))[0] + "_"
     img_src.astype(np.float64)
     for i, img in enumerate(trans_img):
         # 比較用
         # cv2.imwrite("trans_images/" + base + str(i) + ".jpg" ,cv2.hconcat([img_src.astype(np.float64), img.astype(np.float64)]))
         fpath = os.path.join(trans_images, base + str(i) + ".jpg")
-        print(img)
         # img = img / 255  # 正規化
         cv2.imwrite(fpath, img)  # 多次元配列(numpy.ndarray)情報を元に、画像を保存
         print(fpath)
@@ -161,7 +152,6 @@ def save_image(img_src, trans_img, dir_path, fname):  # 保存
 def main(dir_path):
     ope = OperateDir()
     flist = ope.all_file(dir_path)
-    print(flist)
     for fname in flist:
         print(fname)
         img_src, trans_img = make_multiimage(dir_path, fname)
