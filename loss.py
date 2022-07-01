@@ -11,7 +11,7 @@ DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/csv/resultcsv/'
 FNAME = 'loss.csv'
 COLUMNS = ['Epoch', 'Loss', 'Best', 'time']
 ARGS = sys.argv[1]
-EPOCH_MAX = 300
+EPOCH_MAX = 500
 
 
 def get_rows(row, df):  # データの前処理

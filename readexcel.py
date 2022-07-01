@@ -8,11 +8,10 @@ import shutil
 EXCEL_PATH = '/mnt/c/Users/sakakih/Desktop/Download/コピークロス合否.xls'
 EXCEL_PATH2 = '/mnt/c/Users/sakakih/Desktop/Download/01_クロスまとめ.xlsx'
 DOWNLOAD_PATH = '/mnt/c/Users/sakakih/Desktop/Download/izumi04s_OK/color_ok/*'
-SKIPROWS = 2
 
 
 def read_excel():
-    df = pd.read_excel(EXCEL_PATH, sheet_name='メインセンサー', skiprows=SKIPROWS)
+    df = pd.read_excel(EXCEL_PATH, sheet_name='メインセンサー', skiprows=2)
     df = df.drop(df.columns[7:9], axis=1)
     df = df.drop(df.columns[10:12], axis=1)
     df = df.drop(df.index[4:15541], axis=0)
