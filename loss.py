@@ -11,7 +11,11 @@ DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/csv/resultcsv/'
 FNAME = 'loss.csv'
 COLUMNS = ['Epoch', 'Loss', 'Best', 'time']
 ARGS = sys.argv[1]
-EPOCH_MAX = 500
+WINDOW = 10
+X_MIN = 0
+X_MAX = 100
+Y_MIN = 0.00
+Y_MAX = 0.14
 
 
 def get_rows(row, df):  # データの前処理
@@ -23,7 +27,6 @@ def get_rows(row, df):  # データの前処理
         row[3] = row[3].replace('msec', '')
         df.loc[len(df)] = row
     if 'Result' in row[0]:
-        # print(row)
         pass
 
 
@@ -33,11 +36,12 @@ def csv_read(path, fname, columns):  # ファイルパス上のcsvデータをpd
     with open(fpath, encoding='utf-8') as file:
         for row in csv.reader(file):
             get_rows(row, df)
-    return df, fpath
+    df['Loss_MA'] = df[columns[1]].rolling(window=WINDOW).mean()
+    return df
 
 
 def df_plot(df, columns):  # データを可視化する
-    df.plot(xlim=[0, EPOCH_MAX])
+    df.plot(xlim=[X_MIN, X_MAX], ylim=[Y_MIN, Y_MAX])
     plt.title('type' + ARGS, fontsize=14)
     plt.xlabel(columns[0], size=16)
     plt.ylabel(columns[1], size=16)
@@ -50,7 +54,7 @@ def df_plot(df, columns):  # データを可視化する
 
 
 def main():
-    df, fpath = csv_read(DIR_PATH, FNAME, COLUMNS)
+    df = csv_read(DIR_PATH, FNAME, COLUMNS)
     df_plot(df, COLUMNS)
 
 
