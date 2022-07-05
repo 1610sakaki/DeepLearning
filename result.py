@@ -1,42 +1,6 @@
 
-# usage: python3 result.py type4-1
+# usage: python3 result.py 4-1
 # objective: 学習結果からAIモデルの評価を行う
-'''
-#result.tsv
-220607_110555_0000003881_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 100.0%	
-220607_100232_0000002117_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 99.6%	
-220607_084135_0000000637_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 94.7%	
-220607_093134_0000001783_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 99.9%	
-220607_081344_0000000226_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 100.0%	
-220607_103109_0000002915_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 99.3%	
-220607_084554_0000000725_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 93.4%	
-220607_084156_0000000646_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 99.6%	
-220607_082704_0000000594_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 98.3%	
-220607_082632_0000000579_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 98.5%	
-220607_091114_0000001216_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 99.8%	
-220607_091130_0000001224_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 99.6%	
-220607_085739_0000000916_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 72.9%	
-220607_084310_0000000670_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 83.4%	
-220607_105424_0000003556_CAM1_COLOR_OK.jpg	GT : 2	PR : 2	% : 100.0%	
-220607_150607_0000010471_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 100.0%	
-220607_124014_0000006424_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 99.4%	
-220607_090718_0000001146_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 100.0%	
-220607_090710_0000001142_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 95.9%	
-220607_082411_0000000514_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 100.0%	
-220607_142130_0000009211_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 99.8%	
-220607_152705_0000000007_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 100.0%	
-220607_211309_0000009897_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 100.0%	
-220607_162416_0000001602_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 99.2%	
-220607_165209_0000002439_CAM1_COLOR_NG.jpg	GT : 1	PR : 1	% : 100.0%	
-220607_090212_0000001007_CAM1_COLOR_OK.jpg	GT : 1	PR : 1	% : 99.8%	
-220607_090628_0000001125_CAM1_COLOR_OK.jpg	GT : 1	PR : 1	% : 99.6%	
-220607_091459_0000001325_CAM1_COLOR_OK.jpg	GT : 1	PR : 1	% : 99.4%	
-220607_082350_0000000504_CAM1_COLOR_OK.jpg	GT : 1	PR : 1	% : 100.0%	
-220607_091344_0000001289_CAM1_COLOR_OK.jpg	GT : 1	PR : 1	% : 91.8%	
-220607_082434_0000000524_CAM1_COLOR_OK.jpg	GT : 1	PR : 1	% : 99.0%	
-220607_090806_0000001167_CAM1_COLOR_OK.jpg	GT : 1	PR : 1	% : 100.0%	
-220607_085352_0000000883_CAM1_COLOR_OK.jpg	GT : 1	PR : 1	% : 99.7%	
-'''
 
 
 import csv
@@ -81,7 +45,6 @@ def tsv_read(path, fname, columns):  # ファイルパス上のtsvデータをpd
 def write_excel(df, i):  # 結果をエクセルに出力
     with pd.ExcelWriter(EXCEL_PATH, mode='a') as writer:
         df.to_excel(writer, sheet_name='type' + sys.argv[1] + '_'+str(i))
-        #df.to_excel(writer, sheet_name=sys.argv[1])
 
 
 def output_dataframe(df):
@@ -154,9 +117,14 @@ def main():
         round(fpr*100, 1), '実際には陰性であるもののうち、誤って陽性と予測したものの割合']  # 偽陽性率
     print('\n', df_3)
     # output_dataframe(df_2)
+    df.to_csv('out.csv')
+    df_2.to_csv('out2.csv')
+    df_3.to_csv('out3.csv')
+    '''
     write_excel(df, 1)
     write_excel(df_2, 2)
     write_excel(df_3, 3)
+    '''
 
 
 if __name__ == '__main__':

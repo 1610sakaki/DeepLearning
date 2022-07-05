@@ -10,9 +10,8 @@ import sys
 import os
 from operate import OperateDir
 import time
-import matplotlib.pyplot as plt
 
-DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/type5/03_miss/type5-4_MissImage'
+DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/type1'
 
 
 def equalizeHistRGB(src):  # ヒストグラム均一化
@@ -96,9 +95,9 @@ def make_multiimage(dir_path, fname):
         LUT_G2[i] = 255 * pow(float(i) / 255, 1.0 / gamma2)
 
     LUTs.append(LUT_HC)
-    LUTs.append(LUT_LC)
+    # LUTs.append(LUT_LC)
     LUTs.append(LUT_G1)
-    LUTs.append(LUT_G2)
+    # LUTs.append(LUT_G2)
 
     # 画像の読み込み
     img = os.path.join(dir_path, fname)
@@ -110,7 +109,6 @@ def make_multiimage(dir_path, fname):
     # LUT変換
     for i, LUT in enumerate(LUTs):
         trans_img.append(cv2.LUT(img_src, LUT))
-    '''
     # 平滑化
     trans_img.append(cv2.blur(img_src, average_square))
 
@@ -119,8 +117,7 @@ def make_multiimage(dir_path, fname):
 
     # ノイズ付加
     trans_img.append(addGaussianNoise(img_src))
-    #trans_img.append(addSaltPepperNoise(img_src))
-    '''
+    # trans_img.append(addSaltPepperNoise(img_src))
 
     # 反転
     flip_img = []

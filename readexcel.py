@@ -18,7 +18,7 @@ def read_excel():
     drop_index = df.index[df['異常有無'] == '異常なし']
     df = df.drop(drop_index)
     df = df[df['成型日付'] > dt.datetime(2022, 6, 10)]
-    df.to_csv('format01.csv')
+    # df.to_csv('format01.csv')
 
     ls = []
     ls1 = df['カメラ時間'].to_list()
@@ -60,8 +60,8 @@ def read_excel2():
 
 
 def main():
+    read_excel()
     # read_excel()
-    read_excel2()
 
 
 if __name__ == '__main__':
