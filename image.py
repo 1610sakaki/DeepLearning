@@ -11,7 +11,7 @@ import os
 from operate import OperateDir
 import time
 
-DIR_PATH = '/home/mt-sakaki/DEVELOPMENT/AI_PROJECT/IMAGE/ORG_IMAGE/izumi04_img/type1'
+DIR_PATH = '/home/mt-sakaki/DeepLearning/20220905/上面OK'
 
 
 def equalizeHistRGB(src):  # ヒストグラム均一化
@@ -48,14 +48,12 @@ def addSaltPepperNoise(src):  # salt&pepperノイズ
     out = src.copy()
     # Salt mode
     num_salt = np.ceil(amount * src.size * s_vs_p)
-    coords = [np.random.randint(0, i-1, int(num_salt))
-              for i in src.shape]
+    coords = [np.random.randint(0, i-1, int(num_salt)) for i in src.shape]
     out[coords[:-1]] = (255, 255, 255)
 
     # Pepper mode
     num_pepper = np.ceil(amount * src.size * (1. - s_vs_p))
-    coords = [np.random.randint(0, i-1, int(num_pepper))
-              for i in src.shape]
+    coords = [np.random.randint(0, i-1, int(num_pepper)) for i in src.shape]
     out[coords[:-1]] = (0, 0, 0)
     return out
 
@@ -94,9 +92,9 @@ def make_multiimage(dir_path, fname):
         LUT_G1[i] = 255 * pow(float(i) / 255, 1.0 / gamma1)
         LUT_G2[i] = 255 * pow(float(i) / 255, 1.0 / gamma2)
 
-    LUTs.append(LUT_HC)
+    #LUTs.append(LUT_HC)
     # LUTs.append(LUT_LC)
-    LUTs.append(LUT_G1)
+    #LUTs.append(LUT_G1)
     # LUTs.append(LUT_G2)
 
     # 画像の読み込み
