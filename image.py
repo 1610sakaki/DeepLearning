@@ -5,7 +5,6 @@
 #
 
 import os
-import sys
 import time
 
 import cv2
@@ -19,9 +18,11 @@ DIR_PATH = "/home/mt-sakaki/DeepLearning/20220905/上面OK"
 def equalizeHistRGB(src):  # ヒストグラム均一化
 
     RGB = cv2.split(src)
+    """
     Blue = RGB[0]
     Green = RGB[1]
     Red = RGB[2]
+    """
     for i in range(3):
         cv2.equalizeHist(RGB[i])
 
@@ -33,7 +34,7 @@ def addGaussianNoise(src):  # ガウシアンノイズ
 
     row, col, ch = src.shape
     mean = 0
-    var = 0.1
+    # var = 0.1
     sigma = 15
     gauss = np.random.normal(mean, sigma, (row, col, ch))
     gauss = gauss.reshape(row, col, ch)
@@ -138,7 +139,8 @@ def save_image(img_src, trans_img, dir_path, fname):  # 保存
     img_src.astype(np.float64)
     for i, img in enumerate(trans_img):
         # 比較用
-        # cv2.imwrite("trans_images/" + base + str(i) + ".jpg" ,cv2.hconcat([img_src.astype(np.float64), img.astype(np.float64)]))
+        # cv2_hconcat = cv2.hconcat([img_src.astype(np.float64), img.astype(np.float64)])
+        # cv2.imwrite("trans_images/" + base + str(i) + ".jpg" ,cv2_concat)
         fpath = os.path.join(trans_images, base + str(i) + ".jpg")
         # img = img / 255  # 正規化
         cv2.imwrite(fpath, img)  # 多次元配列(numpy.ndarray)情報を元に、画像を保存
