@@ -1,0 +1,58 @@
+{
+    "name": "test",
+    "securityToken": "test Token",
+    "sourceConnection": {
+        "name": "wsl",
+        "providerType": "localFileSystemProxy",
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiNGFlNGI0ZThkODZiMTdhMDUwNmIxYWYyMTU2Y2EzNmVkNTFmNGU5ZTBhZGEzMmVmMTExMTQ2ODkzNTFkYThlNzRhZjI5NWYxYTQ2MGE1MGFkNWE3NzcyYTgwMGQ4MzMwNzFkYWE3Y2JlNmQ1ZGQ4MWYzMGQ0ZjJkYWY4NGM5NmFkYTA1ZjEwMTQ5Y2U0MzNhODA4NDM2OGY1MzU4YWVmYiIsIml2IjoiMzhkMzc1ZDk2ZmE2ZmRiNjZiNjljODNjNDMwMzcxNWFhOTVjMDM4MmFjOWZmM2I4In0="
+        },
+        "id": "h0HlGmO5f"
+    },
+    "targetConnection": {
+        "name": "wsl",
+        "providerType": "localFileSystemProxy",
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiY2MwZWI3OTA1OGE5MGQxNjVjZDNjOTI2MmIxOTA5Njc0MzFiN2YzMWYzYWZhZmM0YzkwOWFkNTk0NjYxZTg4N2Y5ZGUxMWVkNGFlNmEwYjY2MDA3MGNjMjBkN2FlMDQwY2Y0NjAwZmQwNTU0YWE2M2U0YWJiMTlmMmEzZTU5ZGMzZDk5OGE4NWZkNjA4MDc2NWYzZjRlYmM2OGNmZDA5NCIsIml2IjoiYmI4MTU1MTA1MTIxN2IzMzRlMjM4YjU2ZDA1NjI0YjhjYTM3YzI1NjU4ZTcwMTIyIn0="
+        },
+        "id": "h0HlGmO5f"
+    },
+    "videoSettings": {
+        "frameExtractionRate": 15
+    },
+    "tags": [
+        {
+            "name": "bench",
+            "color": "#5db300"
+        }
+    ],
+    "id": "fxUzdDdiL",
+    "activeLearningSettings": {
+        "autoDetect": false,
+        "predictTag": true,
+        "modelPathType": "coco"
+    },
+    "exportFormat": {
+        "providerType": "pascalVOC",
+        "providerOptions": {
+            "encrypted": "eyJjaXBoZXJ0ZXh0IjoiNmZjOWQ3MTQ3YzU2MWU5MWQyMzkxMzRmZWUzMDI2MDYyNjBhOWUzZTkzMDg1NGUxMjA2YjE5NDIzOTYxNjBlOTM5YjEwZjNiM2M2MTkyOTIwYzZjYWI1NDRlNGZlODEyOThlYjA2MjYwY2VhZGI1MmNkM2RhMjc2ZjU4NzNmMGM3ODhjN2JlY2I4M2M0NTFkZjU2MDlkOWRiNTQ0MTQzYyIsIml2IjoiNmNmNWYzNzc0NTBlMGY3YzVlZjIxZjdiOTJmNjcyNGI1MmY1ZGJmYzMxMGQyN2E0In0="
+        }
+    },
+    "version": "2.2.0",
+    "lastVisitedAssetId": "a2d206bd8578c7c1457962bbb1c88073",
+    "assets": {
+        "a2d206bd8578c7c1457962bbb1c88073": {
+            "format": "png",
+            "id": "a2d206bd8578c7c1457962bbb1c88073",
+            "name": "bead_sample_1.png",
+            "path": "file://wsl$/Ubuntu/home/mt-sakaki/DeepLearning/sample_images/bead_sample_1.png",
+            "size": {
+                "width": 4000,
+                "height": 3000
+            },
+            "state": 2,
+            "type": 1,
+            "predicted": true
+        }
+    }
+}

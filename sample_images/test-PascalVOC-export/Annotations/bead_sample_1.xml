@@ -1,0 +1,26 @@
+<annotation verified="yes">
+    <folder>Annotation</folder>
+    <filename>bead_sample_1.png</filename>
+    <path>test-PascalVOC-export/Annotations/bead_sample_1.png</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>4000</width>
+        <height>3000</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+    <name>bench</name>
+    <pose>Unspecified</pose>
+    <truncated>0</truncated>
+    <difficult>0</difficult>
+    <bndbox>
+        <xmin>14.636754989624023</xmin>
+        <ymin>21.555572748184204</ymin>
+        <xmax>3971.5793132781982</xmax>
+        <ymax>2968.2430028915405</ymax>
+    </bndbox>
+</object>
+</annotation>

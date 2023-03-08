@@ -1,0 +1,49 @@
+{
+    "asset": {
+        "format": "png",
+        "id": "a2d206bd8578c7c1457962bbb1c88073",
+        "name": "bead_sample_1.png",
+        "path": "file://wsl$/Ubuntu/home/mt-sakaki/DeepLearning/sample_images/bead_sample_1.png",
+        "size": {
+            "width": 4000,
+            "height": 3000
+        },
+        "state": 2,
+        "type": 1,
+        "predicted": true
+    },
+    "regions": [
+        {
+            "id": "lhAy4lfdt",
+            "type": "RECTANGLE",
+            "tags": [
+                "bench"
+            ],
+            "boundingBox": {
+                "left": 14.636754989624023,
+                "top": 21.555572748184204,
+                "width": 3956.942558288574,
+                "height": 2946.6874301433563
+            },
+            "points": [
+                {
+                    "x": 14.636754989624023,
+                    "y": 21.555572748184204
+                },
+                {
+                    "x": 3971.5793132781982,
+                    "y": 21.555572748184204
+                },
+                {
+                    "x": 3971.5793132781982,
+                    "y": 2968.2430028915405
+                },
+                {
+                    "x": 14.636754989624023,
+                    "y": 2968.2430028915405
+                }
+            ]
+        }
+    ],
+    "version": "2.2.0"
+}
